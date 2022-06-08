@@ -131,6 +131,7 @@ var MailboxList = createReactClass({
       <div className="col-md-2">
         <ul className="mailboxes list-group">
           {mailbox_list}
+          <button>Compose!!!</button>
         </ul>
       </div>
     );
