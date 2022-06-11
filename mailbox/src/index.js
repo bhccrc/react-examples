@@ -138,9 +138,20 @@ var MailboxList = createReactClass({
       }.bind(this)
     );
 
+    function selectUser(e) {
+      console.log(e.target.value);
+    }
+
     return (
       <div className="col-md-2">
-        <ul className="mailboxes list-group">{mailbox_list}</ul>
+        <ul className="mailboxes list-group">
+          {mailbox_list}
+          <select className="list-group-item" onChange={selectUser}>
+            <option value="null">User</option>
+            <option value="user1">User 1</option>
+            <option value="user2">User 2</option>
+          </select>
+        </ul>
       </div>
     );
   },
@@ -155,6 +166,7 @@ var App = createReactClass({
     this.setState({ mailbox_id: id });
   },
 
+  //  ******** Fetch Emails *********
   componentDidMount: function (params) {
     fetch("/emails.json")
       .then((res) => {
@@ -168,12 +180,6 @@ var App = createReactClass({
   },
 
   render: function () {
-    // useEffect(() => {
-    //   fetch("emails.json").then((res) => {
-    //     console.log(res);
-    //   });
-    // }, []);
-
     var mailbox_id = this.state.mailbox_id;
     var selected_mailbox;
     if (mailbox_id) {
@@ -191,6 +197,7 @@ var App = createReactClass({
           mailboxes={this.state.mailboxes || []}
           onSelectMailbox={this.handleSelectMailbox}
         />
+
         <div className="mailbox col-md-10">
           <div className="panel panel-default">
             <div className="panel-body">{selected_mailbox}</div>
