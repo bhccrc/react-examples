@@ -175,6 +175,9 @@ var App = createReactClass({
       })
       .then((data) => {
         console.log(data);
+        // data.fixtures = []
+        //  if curruentUser === 0 or 1
+        // setState to data.fixtures[currentUser]
         this.setState({ mailboxes: data.fixtures });
       });
   },
