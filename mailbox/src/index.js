@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { createRoot } from "react-dom/client";
-import "./style.css";
-import reportWebVitals from "./reportWebVitals";
-import createReactClass from "create-react-class";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import './style.css';
+import reportWebVitals from './reportWebVitals';
+import createReactClass from 'create-react-class';
 
 var Email = createReactClass({
   render: function () {
@@ -18,10 +18,7 @@ var Email = createReactClass({
           <dt>Subject</dt>
           <dd>{this.props.subject}</dd>
         </dl>
-        <div
-          className="body"
-          dangerouslySetInnerHTML={{ __html: this.props.body }}
-        ></div>
+        <div className="body" dangerouslySetInnerHTML={{ __html: this.props.body }}></div>
       </div>
     );
   },
@@ -111,11 +108,11 @@ var Mailbox = createReactClass({
 
     return (
       <div>
-        <EmailList
-          emails={this.props.emails}
-          onSelectEmail={this.handleSelectEmail}
-        />
-        <div className="email-viewer">{selected_email}</div>
+        <EmailList emails={this.props.emails}
+          onSelectEmail={this.handleSelectEmail} />
+        <div className="email-viewer">
+          {selected_email}
+        </div>
       </div>
     );
   },
@@ -151,6 +148,7 @@ var MailboxList = createReactClass({
             <option value="user1">User 1</option>
             <option value="user2">User 2</option>
           </select>
+          <button>Compose</button>
         </ul>
       </div>
     );
